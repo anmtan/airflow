@@ -35,7 +35,8 @@ class PodDefaults:
     SIDECAR_CONTAINER = k8s.V1Container(
         name=SIDECAR_CONTAINER_NAME,
         command=['sh', '-c', XCOM_CMD],
-        image='alpine',
+        image='gitlab.com:443/nielsen-media/platforms/tools-devops/dependency_proxy/containers/alpine',
+        image_pull_policy='IfNotPresent',
         volume_mounts=[VOLUME_MOUNT],
         resources=k8s.V1ResourceRequirements(
             requests={
